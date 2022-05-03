@@ -1,2 +1,2 @@
 # PixelPress
-The fast wordpress alternative
+The fast wordpress alternative written in GO
