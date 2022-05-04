@@ -8,12 +8,13 @@ import (
 	"log"
 )
 
-var registry = system.NewRegistry()
+var registry = system.NewControllerRegistry()
 var engine = gin.Default()
 
 func initialize() {
 	log.Println("PixelPress initialize()")
-	registry.RegisterControllerType("test", controller.TestController{})
+	registry.RegisterType(controller.TestController{})
+	//fixme + name
 }
 
 func main() {

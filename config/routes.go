@@ -6,9 +6,9 @@ import (
 	"log"
 )
 
-var configRegistry *system.Registry = nil
+var configRegistry *system.ControllerRegistry = nil
 
-func Routes(registry *system.Registry, route *gin.Engine) {
+func Routes(registry *system.ControllerRegistry, route *gin.Engine) {
 
 	configRegistry = registry
 	r := route.Group("/pxp")
@@ -20,16 +20,17 @@ func Routes(registry *system.Registry, route *gin.Engine) {
 
 func handleDefaultRoute(c *gin.Context) {
 	controller := c.Param("controller")
-	action := c.Param("action")
+	//action := c.Param("action")
 	//id := c.Param("id")
 
-	controllerPointer, err := configRegistry.NewController(controller)
+	newControllerInstance, err := configRegistry.NewController(controller)
 	if err != nil {
-		log.Print("unrecognized controller name: %s, cause: %s", controller, err)
+		log.Printf("unrecognized controller name: %s, cause: %s", controller, err)
+	} else {
+		log.Printf("controller name: %s, value %s", controller, newControllerInstance)
 	}
-
-	defbc := *controllerPointer
-	var x = defbc.(system.BaseControllerWithActions)
-	f := *x.GetAction(action)
-	f(c)
+	f := *newControllerInstance
+	ff := *f.GetAction(controller)
+	log.Println(ff)
+	ff(c)
 }

@@ -7,7 +7,7 @@ import (
 )
 
 type TestController struct {
-	system.BaseController
+	system.DefaultBaseController
 }
 
 func test(context *gin.Context) {
@@ -15,7 +15,7 @@ func test(context *gin.Context) {
 }
 
 //fixme how to avoid this boilerplate code
-func (*TestController) getAction(name string) *func(*gin.Context) {
+func (TestController) getAction(name string) *func(*gin.Context) {
 	switch name {
 	case "test":
 		v := test

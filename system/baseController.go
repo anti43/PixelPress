@@ -1,6 +1,9 @@
 package system
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
 
 type BaseController interface {
 }
@@ -14,9 +17,14 @@ type DefaultBaseController struct {
 	BaseControllerWithActions
 }
 
-func (*DefaultBaseController) GetAction(name string) *func(*gin.Context) {
+func base(context *gin.Context) {
+	context.String(http.StatusOK, "base")
+}
+
+func (DefaultBaseController) GetAction(name string) *func(*gin.Context) {
 	switch name {
 	default:
-		return nil
+		v := base
+		return &v
 	}
 }
