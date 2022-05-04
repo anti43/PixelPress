@@ -3,6 +3,8 @@ module PixelPress
 go 1.18
 
 require (
+	github.com/foolin/gin-template v0.0.0-20190415034731-41efedfb393b // indirect
+	github.com/foolin/goview v0.3.0 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.7.7 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect

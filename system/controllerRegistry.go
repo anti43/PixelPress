@@ -17,6 +17,9 @@ func (s *ControllerRegistry) NewController(name string) (*BaseControllerWithActi
 	}
 	return t, nil
 }
+func (s *ControllerRegistry) RegisterNamedType(name string, t BaseControllerWithActions) {
+	s.types[name] = &t
+}
 
 func (s *ControllerRegistry) RegisterType(t BaseControllerWithActions) {
 	name := reflect.TypeOf(t).String()
