@@ -5,7 +5,6 @@ import (
 	"PixelPress/system"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"log"
 	"net/http"
 )
 
@@ -23,7 +22,7 @@ func dashboard(context *gin.Context) {
 }
 
 func (t AdminController) GetAction(name string) *func(*gin.Context) {
-	log.Println(name)
+
 	switch name {
 	case "dashboard":
 		v := dashboard

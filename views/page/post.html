@@ -292,16 +292,18 @@
             <th>Id</th>
             <th>CreatedAt</th>
             <th>Description</th>
+            <th>Text</th>
           </tr>
           </thead>
           <tbody>
 
-          {{ range .data }}
+          {{ with .data }}
 
           <tr>
             <td><a href="/pxp/post/get?id={{ .ID }}">{{ .ID }}</a></td>
             <td>{{ .CreatedAt }}</td>
             <td>{{ .Description }}</td>
+            <td>{{ .Text }}</td>
           </tr>
           {{ end }}
           </tbody>

@@ -8,10 +8,9 @@ import (
 func HandleDefaultRoute(c *gin.Context, configRegistry *ControllerRegistry) {
 	controller := c.Param("controller")
 	action := c.Param("action")
-	//id := c.Param("id")
 
 	newControllerInstance, err := configRegistry.NewController(controller)
-	if err != nil {
+	if err != nil || newControllerInstance == nil {
 		log.Printf("unrecognized controller name: %s, cause: %s", controller, err)
 	} else {
 		log.Printf("controller name: %s, value %s", controller, newControllerInstance)
